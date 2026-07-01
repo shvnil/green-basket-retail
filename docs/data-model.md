@@ -101,3 +101,20 @@ The Green Basket Retail Analytics Platform follows these principles:
 - Model the business as it operates in reality.
 - Separate descriptive data (dimensions) from transactional data (facts).
 - Design for reporting and analytics rather than transactional processing.
+
+## Inventory 
+# Purpose
+Represents the current stock on hand for every product in every Green Basket Retail store.
+
+It bridges the Stores and Products dimension tables and provides the foundation for inventory, sales and operational reporting.
+# Primary Key
+inventory_id
+# Relationships
+- Many inventory records belong to one store
+- Many inventory records belong to one product
+- Each store can have only one current inventory record per product
+# Business Rules
+- system_soh represents the system-recorded stock on hand
+- actual_soh represents the most recent physical stocktake count
+- last_stocktake_date tracks when inventory was last verified
+- UNIQUE (store_id, product_id) prevents duplicate inventory records for the same store and product
